@@ -8,7 +8,6 @@ public class BinaryTree2 implements Serializable
     public BinaryTree2 left;
     public BinaryTree2 right;
 
-
     public BinaryTree2(int payload)
     {
         this.payload = payload;

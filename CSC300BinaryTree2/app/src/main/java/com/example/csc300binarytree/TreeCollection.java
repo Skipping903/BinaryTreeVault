@@ -4,7 +4,7 @@ import java.util.LinkedList;
 
 public class TreeCollection
 {
-    public LinkedList<TreeValue> theMappings;
+    private LinkedList<TreeValue> theMappings;
 
     public TreeCollection()
     {

@@ -24,9 +24,10 @@ public class MainActivity extends AppCompatActivity
         this.rightButton = this.findViewById(R.id.rightButton);
 
         //get the tree owned by this MainActivity
-        if(this.getIntent().hasExtra("myTree"))
+        if(this.getIntent().hasExtra("myTreeCode"))
         {
-            this.myTree = (BinaryTree2)this.getIntent().getSerializableExtra("myTree");
+            String myCode = this.getIntent().getStringExtra("myCode");
+            this.myTree = Core.theVault.getTreeWithSuperSecretCode(myCode);
         }
         else
         {
@@ -58,14 +59,18 @@ public class MainActivity extends AppCompatActivity
     public void onLeftButtonClicked(View vy)
     {
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("myTree", this.myTree.left);
+        i.putExtra("myTreeCode","" + Core.currentCode);
+        Core.theVault.addTree("" + Core.currentCode, this.myTree.left);
+        Core.currentCode++;
         this.startActivity(i);
     }
 
     public void onRightButtonClicked(View vy)
     {
         Intent i = new Intent(this, MainActivity.class);
-        i.putExtra("myTree", this.myTree.right);
+        i.putExtra("myTreeCode","" + Core.currentCode);
+        Core.theVault.addTree("" + Core.currentCode, this.myTree.right);
+        Core.currentCode++;
         this.startActivity(i);
     }
 }
